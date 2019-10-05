@@ -1,26 +1,8 @@
 package container_unsafe;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArrayList;
-/**
- * 
- * @author robot
- * 1 故障现象：
- * 	java.util.ConcurrentModificationException
- * 2 导致原因
- * 		并发争抢修改导致，参考我们的花名册签名情况。
- * 		一个人正在写入，另外一个同学过来抢夺，导致数据不一致，发生异常
- * 
- * 3 解决方案
- * 	3.1 Vector (较low的一种方法)
- * 	3.2 Collections.synchronizedList(new ArrayList<>());
- *	3.3 JUC new CopyOnWriteArrayList<>();
- */
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 写时复制：
