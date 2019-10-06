@@ -40,13 +40,13 @@ class MyResource {
 			result = blockingQueue.poll(2L, TimeUnit.SECONDS);
 			if(null==result||"".equalsIgnoreCase(result)) {
 				FLAG = false;
-				System.out.println(Thread.currentThread().getName()+"\t 消费队列"+result+"失败");
+				System.out.println(Thread.currentThread().getName()+"\t 消费队列草果2秒失败");
 				System.out.println();
 				System.out.println();
 				return;
 			}
 			Utils.sleep(1);
-			System.out.println(Thread.currentThread().getName()+"\t消费"+result+"成功");
+			System.out.println(Thread.currentThread().getName()+"\t消费队列蛋糕"+result+"成功");
 		}
 	}
 	
@@ -60,7 +60,7 @@ public class ProduceConsumer_BlockQueueDemo {
 	public static void main(String[] args) {
 		MyResource myResource = new MyResource(new ArrayBlockingQueue<>(10));
 		
-		for(int i=0; i<3; i++) {
+		for(int i=0; i<1; i++) {
 			new Thread(()->{
 				System.out.println(Thread.currentThread().getName()+"\t生产线程启动");
 				try {
@@ -70,7 +70,6 @@ public class ProduceConsumer_BlockQueueDemo {
 					e.printStackTrace();
 				}
 			}, "Produce"+i).start();
-
 
 			new Thread(()->{
 				System.out.println(Thread.currentThread().getName()+"\t消费线程启动");
@@ -83,7 +82,7 @@ public class ProduceConsumer_BlockQueueDemo {
 			}, "Consumer"+i).start();
 		}
 		
-		Utils.sleep(5);
+		Utils.sleep(6);
 		System.out.println("Main线程叫停");
 		myResource.stop();
 	}
