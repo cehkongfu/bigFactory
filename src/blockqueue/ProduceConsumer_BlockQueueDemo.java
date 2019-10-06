@@ -71,6 +71,7 @@ public class ProduceConsumer_BlockQueueDemo {
 				}
 			}, "Produce"+i).start();
 
+
 			new Thread(()->{
 				System.out.println(Thread.currentThread().getName()+"\t消费线程启动");
 				try {
